@@ -1,0 +1,15 @@
+{
+  "name": "curso-webpack",
+  "version": "1.0.0",
+  "description": "Curso de webpack Platzi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "Webpack index.js bundle.js"
+  },
+  "author": "Ricardo Medina",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "3.8.1"
+  }
+}
