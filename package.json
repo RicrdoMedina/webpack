@@ -8,7 +8,8 @@
     "build": "Webpack index.js bundle.js",
     "build:local": "webpack",
     "build:external": "webpack --config ./external/webpack.config.js",
-    "build:css": "webpack --config ./css-styles-loader/webpack.config.js"
+    "build:css": "webpack --config ./css-styles-loader/webpack.config.js",
+    "build:extract:css": "webpack --config ./plugin-extract-text/webpack.config.js"
   },
   "author": "Ricardo Medina",
   "license": "MIT",
