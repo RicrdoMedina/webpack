@@ -74,12 +74,9 @@ __webpack_require__(1);
 
 var _message = __webpack_require__(2);
 
-var _message2 = _interopRequireDefault(_message);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 // console.log('hola mundo desde webpack');
-document.write(_message2.default.firstMessage);
+document.write(_message.firstMessage);
+(0, _message.delayedMessage)();
 console.log('Hola Mundo!, usando modulo');
 
 /***/ }),
@@ -95,9 +92,59 @@ console.log('Hola Mundo!, usando modulo');
 "use strict";
 
 
+var _renderToDom = __webpack_require__(3);
+
+var _renderToDom2 = _interopRequireDefault(_renderToDom);
+
+var _makeMessages = __webpack_require__(4);
+
+var _makeMessages2 = _interopRequireDefault(_makeMessages);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var waitTime = new Promise(function (todoOk, todoMal) {
+  setTimeout(function () {
+    todoOk('Han pasado 3 seg');
+  }, 3000);
+});
+
 module.exports = {
-  firstMessage: 'Hola mundo desde un modulo'
+  firstMessage: 'Hola mundo desde un modulo',
+  delayedMessage: async function delayedMessage() {
+    var message = await waitTime;
+    (0, _renderToDom2.default)((0, _makeMessages2.default)(message));
+    console.log(message);
+  }
 };
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function renderToDom(element) {
+  document.body.append(element);
+};
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+function makeMesagge(msg) {
+  var element = document.createElement('p');
+  element.textContent = msg;
+  return element;
+}
+
+exports.default = makeMesagge;
 
 /***/ })
 /******/ ]);
