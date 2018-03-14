@@ -5,9 +5,9 @@ const webpack = require('webpack');
 module.exports = {
   entry: {
     //Libreria, paquetes npm que queremos empaquetar como comunes
-    vendor:[
-      'react','react-dom'
-    ],
+    // vendor:[
+    //   'react','react-dom'
+    // ],
     home:path.resolve(__dirname, 'src/js/index.js'),
     contact:path.resolve(__dirname, 'src/js/contact.js'),
   },
@@ -115,10 +115,13 @@ module.exports = {
     //un solo lugar, podemos ponerle un nombre a ese archivo que se va a generar
     //Por que tendremos ahora home, contact y un archivo extra que genera con los modulos duplicados
     //Con esto automaticamente me extraera el codigo comun y lo colocara en un solo archivo llamado common
-    new webpack.optimize.CommonsChunkPlugin({
-      name:'vendor',
-      //No importa el numero de modulos generame un paquete de vendor
-      minChunks: Infinity,
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name:'vendor',
+    //   //No importa el numero de modulos generame un paquete de vendor
+    //   minChunks: Infinity,
+    // })
+    new webpack.DllReferencePlugin({
+      manifest:require('./modules-manifest.json')
     })
   ]
 }
