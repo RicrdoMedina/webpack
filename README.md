@@ -1,2 +1,2 @@
-# Working-webpack
-Trabajando con webpack
+# Webpack
+Ejercicios practicos con webpack
